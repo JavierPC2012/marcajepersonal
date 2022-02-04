@@ -1,0 +1,28 @@
+{% load static %}
+{% include 'nav.html' %}
+   <div class="container_1">
+      <div class="card">
+         <div class="card_body">
+            <p>INGRESAR NUEVO USUARIO:</p>
+            <form action="/add_nuevo_usuario/" method="POST">{% csrf_token %}
+               <input type="text" name="codigoEmpleado" size="12" placeholder="Codigo de Empleado" required>
+               <input type="text" name="nombreCompleto" size="12" placeholder="Nombre Completo" required>
+               <h3>PUESTO:</h3>
+               <select name="puesto">
+                <option>N2</option>
+                <option>CNOC REACTIVO</option>
+                <option>CNOC PROACTIVO</option>
+               </select>
+               <br>
+               <input type="submit" value="Agregar">
+            </form>
+         </div>
+      </div>
+   </div>
+   <div class="{{alerta}}">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+   </div> 
+</body>
+</html>

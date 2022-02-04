@@ -1,0 +1,39 @@
+{% load static from static %}
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset='utf-8'>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+    <body>
+    <div class="sidenav">
+        <ul>
+			<li>
+                <a href="/add_nuevo_usuario/">
+				<div class="barra"></div>
+				<p class="menu">Agregar Nuevo Usuario</p>
+                </a>
+			</li>
+            <li>
+                <a href="/marcaje_entrada/" id="btntest">
+				<div class="barra"></div>
+				<p class="menu">Marcar Entrada</p>
+                </a>
+            </li>
+                <li>
+                    <a href="/marcaje_salida/">
+                    <div class="barra"></div>
+                    <p class="menu">Marcar Salida</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/control_panel/">
+                    <div class="barra"></div>
+                    <p class="menu">Panel de Administración</p>
+                    </a>
+                </li>
+            </a>
+		</ul>
+    </div>

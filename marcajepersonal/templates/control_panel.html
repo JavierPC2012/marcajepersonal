@@ -1,0 +1,64 @@
+{% load static %}
+{% include 'nav.html' %}
+   <div class="container_1_l">
+      <div class="card_l">
+         <div class="card_body">
+            <div class="card_title">
+                <p>Lista de Empleados:</p>
+            </div>
+            <div class="table_style">
+               <table>
+                  <tr>
+                  <th>CODIGO EMPLEADO</th>
+                  <th>NOMBRE</th>
+                  <th>PUESTO</th>
+                  <th>--</th>
+                  </tr>
+                  {% for empleado in lista_usuarios %}
+                  <tr>
+                  <td>{{empleado.codigo}}</td>
+                  <td>{{empleado.nombre}}</td>
+                  <td>{{empleado.puesto}}</td>
+                  <td>
+                   <form class='nodo_1_select' action='/control_panel/' method="POST">{% csrf_token %}
+                     <input type="hidden" name="codigoEmpleado" value="{{empleado.codigo}}">
+                     <input type="submit" class="select" value="Ver Historial">
+                   </form>
+                  </td>
+                  </tr>
+                  {% endfor %}
+               </table>
+            </div>
+         </div>
+      </div>
+      {% if usuario %}
+      <div class="card_l">
+         <div class="card_body">
+            <div class="card_title">
+               {% for datos in usuario %}
+                  <h3>{{datos.codigo}}</h3> <h3>{{datos.nombre}}</h3> <h3>{{datos.puesto}}</h3>
+               {% endfor %}
+            </div>
+               <table>
+                  <tr>
+                  <th>FECHA</th>
+                  <th>TIPO</th>
+                  </tr>
+                  {% for marcaje in lista_marcajes %}
+                  <tr>
+                  <td>{{marcaje.fecha}}</td>
+                  <td>{{marcaje.tipo}}</td>
+                  </tr>
+                  {% endfor %}
+               </table>
+         </div>
+      </div>
+      {% endif %}
+   </div>
+   <div class="{{alerta}}">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+   </div> 
+</body>
+</html>
